@@ -1,0 +1,5 @@
+1, c, @To_Prove
+2, a, @Given
+3, a, @Given
+4, a&c, @Proj1, 3, 4
+5, P says c, @Proj1, 3, 4

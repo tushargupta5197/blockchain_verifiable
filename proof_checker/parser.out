@@ -1,0 +1,805 @@
+Created by PLY version 3.10 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    CAN_ACCESS
+    DERIVES
+
+Grammar
+
+Rule 0     S' -> start
+Rule 1     start -> proof
+Rule 2     proof -> to_prove lines
+Rule 3     proof -> to_prove givens lines
+Rule 4     givens -> givens given
+Rule 5     givens -> given
+Rule 6     given -> LINENUM statement GIVEN
+Rule 7     to_prove -> LINENUM statement TO_PROVE
+Rule 8     lines -> lines line
+Rule 9     lines -> line
+Rule 10    line -> LINENUM statement REASON LINENUM LINENUM
+Rule 11    line -> LINENUM statement REASON LINENUM
+Rule 12    line -> LINENUM statement REASON
+Rule 13    statement -> OBJECT
+Rule 14    statement -> statement AND statement
+Rule 15    statement -> statement OR statement
+Rule 16    statement -> statement IMPLIES statement
+Rule 17    statement -> statement EQUIVALENT statement
+Rule 18    statement -> NOT statement
+Rule 19    statement -> PRINCIPLE SAYS statement
+Rule 20    statement -> LPAREN statement RPAREN
+Rule 21    statement -> PRINCIPLE SAYS_FOR PRINCIPLE
+Rule 22    statement -> PRINCIPLE CONTROLS statement
+
+Terminals, with rules where they appear
+
+AND                  : 14
+CAN_ACCESS           : 
+CONTROLS             : 22
+DERIVES              : 
+EQUIVALENT           : 17
+GIVEN                : 6
+IMPLIES              : 16
+LINENUM              : 6 7 10 10 10 11 11 12
+LPAREN               : 20
+NOT                  : 18
+OBJECT               : 13
+OR                   : 15
+PRINCIPLE            : 19 21 21 22
+REASON               : 10 11 12
+RPAREN               : 20
+SAYS                 : 19
+SAYS_FOR             : 21
+TO_PROVE             : 7
+error                : 
+
+Nonterminals, with rules where they appear
+
+given                : 4 5
+givens               : 3 4
+line                 : 8 9
+lines                : 2 3 8
+proof                : 1
+start                : 0
+statement            : 6 7 10 11 12 14 14 15 15 16 16 17 17 18 19 20 22
+to_prove             : 2 3
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . start
+    (1) start -> . proof
+    (2) proof -> . to_prove lines
+    (3) proof -> . to_prove givens lines
+    (7) to_prove -> . LINENUM statement TO_PROVE
+
+    LINENUM         shift and go to state 2
+
+    to_prove                       shift and go to state 1
+    start                          shift and go to state 3
+    proof                          shift and go to state 4
+
+state 1
+
+    (2) proof -> to_prove . lines
+    (3) proof -> to_prove . givens lines
+    (8) lines -> . lines line
+    (9) lines -> . line
+    (4) givens -> . givens given
+    (5) givens -> . given
+    (10) line -> . LINENUM statement REASON LINENUM LINENUM
+    (11) line -> . LINENUM statement REASON LINENUM
+    (12) line -> . LINENUM statement REASON
+    (6) given -> . LINENUM statement GIVEN
+
+    LINENUM         shift and go to state 8
+
+    givens                         shift and go to state 5
+    given                          shift and go to state 6
+    lines                          shift and go to state 7
+    line                           shift and go to state 9
+
+state 2
+
+    (7) to_prove -> LINENUM . statement TO_PROVE
+    (13) statement -> . OBJECT
+    (14) statement -> . statement AND statement
+    (15) statement -> . statement OR statement
+    (16) statement -> . statement IMPLIES statement
+    (17) statement -> . statement EQUIVALENT statement
+    (18) statement -> . NOT statement
+    (19) statement -> . PRINCIPLE SAYS statement
+    (20) statement -> . LPAREN statement RPAREN
+    (21) statement -> . PRINCIPLE SAYS_FOR PRINCIPLE
+    (22) statement -> . PRINCIPLE CONTROLS statement
+
+    OBJECT          shift and go to state 11
+    NOT             shift and go to state 14
+    PRINCIPLE       shift and go to state 12
+    LPAREN          shift and go to state 10
+
+    statement                      shift and go to state 13
+
+state 3
+
+    (0) S' -> start .
+
+
+
+state 4
+
+    (1) start -> proof .
+
+    $end            reduce using rule 1 (start -> proof .)
+
+
+state 5
+
+    (3) proof -> to_prove givens . lines
+    (4) givens -> givens . given
+    (8) lines -> . lines line
+    (9) lines -> . line
+    (6) given -> . LINENUM statement GIVEN
+    (10) line -> . LINENUM statement REASON LINENUM LINENUM
+    (11) line -> . LINENUM statement REASON LINENUM
+    (12) line -> . LINENUM statement REASON
+
+    LINENUM         shift and go to state 17
+
+    given                          shift and go to state 15
+    lines                          shift and go to state 16
+    line                           shift and go to state 9
+
+state 6
+
+    (5) givens -> given .
+
+    LINENUM         reduce using rule 5 (givens -> given .)
+
+
+state 7
+
+    (2) proof -> to_prove lines .
+    (8) lines -> lines . line
+    (10) line -> . LINENUM statement REASON LINENUM LINENUM
+    (11) line -> . LINENUM statement REASON LINENUM
+    (12) line -> . LINENUM statement REASON
+
+    $end            reduce using rule 2 (proof -> to_prove lines .)
+    LINENUM         shift and go to state 18
+
+    line                           shift and go to state 19
+
+state 8
+
+    (10) line -> LINENUM . statement REASON LINENUM LINENUM
+    (11) line -> LINENUM . statement REASON LINENUM
+    (12) line -> LINENUM . statement REASON
+    (6) given -> LINENUM . statement GIVEN
+    (13) statement -> . OBJECT
+    (14) statement -> . statement AND statement
+    (15) statement -> . statement OR statement
+    (16) statement -> . statement IMPLIES statement
+    (17) statement -> . statement EQUIVALENT statement
+    (18) statement -> . NOT statement
+    (19) statement -> . PRINCIPLE SAYS statement
+    (20) statement -> . LPAREN statement RPAREN
+    (21) statement -> . PRINCIPLE SAYS_FOR PRINCIPLE
+    (22) statement -> . PRINCIPLE CONTROLS statement
+
+    OBJECT          shift and go to state 11
+    NOT             shift and go to state 14
+    PRINCIPLE       shift and go to state 12
+    LPAREN          shift and go to state 10
+
+    statement                      shift and go to state 20
+
+state 9
+
+    (9) lines -> line .
+
+    LINENUM         reduce using rule 9 (lines -> line .)
+    $end            reduce using rule 9 (lines -> line .)
+
+
+state 10
+
+    (20) statement -> LPAREN . statement RPAREN
+    (13) statement -> . OBJECT
+    (14) statement -> . statement AND statement
+    (15) statement -> . statement OR statement
+    (16) statement -> . statement IMPLIES statement
+    (17) statement -> . statement EQUIVALENT statement
+    (18) statement -> . NOT statement
+    (19) statement -> . PRINCIPLE SAYS statement
+    (20) statement -> . LPAREN statement RPAREN
+    (21) statement -> . PRINCIPLE SAYS_FOR PRINCIPLE
+    (22) statement -> . PRINCIPLE CONTROLS statement
+
+    OBJECT          shift and go to state 11
+    NOT             shift and go to state 14
+    PRINCIPLE       shift and go to state 12
+    LPAREN          shift and go to state 10
+
+    statement                      shift and go to state 21
+
+state 11
+
+    (13) statement -> OBJECT .
+
+    REASON          reduce using rule 13 (statement -> OBJECT .)
+    GIVEN           reduce using rule 13 (statement -> OBJECT .)
+    AND             reduce using rule 13 (statement -> OBJECT .)
+    OR              reduce using rule 13 (statement -> OBJECT .)
+    IMPLIES         reduce using rule 13 (statement -> OBJECT .)
+    EQUIVALENT      reduce using rule 13 (statement -> OBJECT .)
+    TO_PROVE        reduce using rule 13 (statement -> OBJECT .)
+    RPAREN          reduce using rule 13 (statement -> OBJECT .)
+
+
+state 12
+
+    (19) statement -> PRINCIPLE . SAYS statement
+    (21) statement -> PRINCIPLE . SAYS_FOR PRINCIPLE
+    (22) statement -> PRINCIPLE . CONTROLS statement
+
+    SAYS            shift and go to state 24
+    SAYS_FOR        shift and go to state 22
+    CONTROLS        shift and go to state 23
+
+
+state 13
+
+    (7) to_prove -> LINENUM statement . TO_PROVE
+    (14) statement -> statement . AND statement
+    (15) statement -> statement . OR statement
+    (16) statement -> statement . IMPLIES statement
+    (17) statement -> statement . EQUIVALENT statement
+
+    TO_PROVE        shift and go to state 25
+    AND             shift and go to state 26
+    OR              shift and go to state 29
+    IMPLIES         shift and go to state 27
+    EQUIVALENT      shift and go to state 28
+
+
+state 14
+
+    (18) statement -> NOT . statement
+    (13) statement -> . OBJECT
+    (14) statement -> . statement AND statement
+    (15) statement -> . statement OR statement
+    (16) statement -> . statement IMPLIES statement
+    (17) statement -> . statement EQUIVALENT statement
+    (18) statement -> . NOT statement
+    (19) statement -> . PRINCIPLE SAYS statement
+    (20) statement -> . LPAREN statement RPAREN
+    (21) statement -> . PRINCIPLE SAYS_FOR PRINCIPLE
+    (22) statement -> . PRINCIPLE CONTROLS statement
+
+    OBJECT          shift and go to state 11
+    NOT             shift and go to state 14
+    PRINCIPLE       shift and go to state 12
+    LPAREN          shift and go to state 10
+
+    statement                      shift and go to state 30
+
+state 15
+
+    (4) givens -> givens given .
+
+    LINENUM         reduce using rule 4 (givens -> givens given .)
+
+
+state 16
+
+    (3) proof -> to_prove givens lines .
+    (8) lines -> lines . line
+    (10) line -> . LINENUM statement REASON LINENUM LINENUM
+    (11) line -> . LINENUM statement REASON LINENUM
+    (12) line -> . LINENUM statement REASON
+
+    $end            reduce using rule 3 (proof -> to_prove givens lines .)
+    LINENUM         shift and go to state 18
+
+    line                           shift and go to state 19
+
+state 17
+
+    (6) given -> LINENUM . statement GIVEN
+    (10) line -> LINENUM . statement REASON LINENUM LINENUM
+    (11) line -> LINENUM . statement REASON LINENUM
+    (12) line -> LINENUM . statement REASON
+    (13) statement -> . OBJECT
+    (14) statement -> . statement AND statement
+    (15) statement -> . statement OR statement
+    (16) statement -> . statement IMPLIES statement
+    (17) statement -> . statement EQUIVALENT statement
+    (18) statement -> . NOT statement
+    (19) statement -> . PRINCIPLE SAYS statement
+    (20) statement -> . LPAREN statement RPAREN
+    (21) statement -> . PRINCIPLE SAYS_FOR PRINCIPLE
+    (22) statement -> . PRINCIPLE CONTROLS statement
+
+    OBJECT          shift and go to state 11
+    NOT             shift and go to state 14
+    PRINCIPLE       shift and go to state 12
+    LPAREN          shift and go to state 10
+
+    statement                      shift and go to state 31
+
+state 18
+
+    (10) line -> LINENUM . statement REASON LINENUM LINENUM
+    (11) line -> LINENUM . statement REASON LINENUM
+    (12) line -> LINENUM . statement REASON
+    (13) statement -> . OBJECT
+    (14) statement -> . statement AND statement
+    (15) statement -> . statement OR statement
+    (16) statement -> . statement IMPLIES statement
+    (17) statement -> . statement EQUIVALENT statement
+    (18) statement -> . NOT statement
+    (19) statement -> . PRINCIPLE SAYS statement
+    (20) statement -> . LPAREN statement RPAREN
+    (21) statement -> . PRINCIPLE SAYS_FOR PRINCIPLE
+    (22) statement -> . PRINCIPLE CONTROLS statement
+
+    OBJECT          shift and go to state 11
+    NOT             shift and go to state 14
+    PRINCIPLE       shift and go to state 12
+    LPAREN          shift and go to state 10
+
+    statement                      shift and go to state 32
+
+state 19
+
+    (8) lines -> lines line .
+
+    LINENUM         reduce using rule 8 (lines -> lines line .)
+    $end            reduce using rule 8 (lines -> lines line .)
+
+
+state 20
+
+    (10) line -> LINENUM statement . REASON LINENUM LINENUM
+    (11) line -> LINENUM statement . REASON LINENUM
+    (12) line -> LINENUM statement . REASON
+    (6) given -> LINENUM statement . GIVEN
+    (14) statement -> statement . AND statement
+    (15) statement -> statement . OR statement
+    (16) statement -> statement . IMPLIES statement
+    (17) statement -> statement . EQUIVALENT statement
+
+    REASON          shift and go to state 34
+    GIVEN           shift and go to state 33
+    AND             shift and go to state 26
+    OR              shift and go to state 29
+    IMPLIES         shift and go to state 27
+    EQUIVALENT      shift and go to state 28
+
+
+state 21
+
+    (20) statement -> LPAREN statement . RPAREN
+    (14) statement -> statement . AND statement
+    (15) statement -> statement . OR statement
+    (16) statement -> statement . IMPLIES statement
+    (17) statement -> statement . EQUIVALENT statement
+
+    RPAREN          shift and go to state 35
+    AND             shift and go to state 26
+    OR              shift and go to state 29
+    IMPLIES         shift and go to state 27
+    EQUIVALENT      shift and go to state 28
+
+
+state 22
+
+    (21) statement -> PRINCIPLE SAYS_FOR . PRINCIPLE
+
+    PRINCIPLE       shift and go to state 36
+
+
+state 23
+
+    (22) statement -> PRINCIPLE CONTROLS . statement
+    (13) statement -> . OBJECT
+    (14) statement -> . statement AND statement
+    (15) statement -> . statement OR statement
+    (16) statement -> . statement IMPLIES statement
+    (17) statement -> . statement EQUIVALENT statement
+    (18) statement -> . NOT statement
+    (19) statement -> . PRINCIPLE SAYS statement
+    (20) statement -> . LPAREN statement RPAREN
+    (21) statement -> . PRINCIPLE SAYS_FOR PRINCIPLE
+    (22) statement -> . PRINCIPLE CONTROLS statement
+
+    OBJECT          shift and go to state 11
+    NOT             shift and go to state 14
+    PRINCIPLE       shift and go to state 12
+    LPAREN          shift and go to state 10
+
+    statement                      shift and go to state 37
+
+state 24
+
+    (19) statement -> PRINCIPLE SAYS . statement
+    (13) statement -> . OBJECT
+    (14) statement -> . statement AND statement
+    (15) statement -> . statement OR statement
+    (16) statement -> . statement IMPLIES statement
+    (17) statement -> . statement EQUIVALENT statement
+    (18) statement -> . NOT statement
+    (19) statement -> . PRINCIPLE SAYS statement
+    (20) statement -> . LPAREN statement RPAREN
+    (21) statement -> . PRINCIPLE SAYS_FOR PRINCIPLE
+    (22) statement -> . PRINCIPLE CONTROLS statement
+
+    OBJECT          shift and go to state 11
+    NOT             shift and go to state 14
+    PRINCIPLE       shift and go to state 12
+    LPAREN          shift and go to state 10
+
+    statement                      shift and go to state 38
+
+state 25
+
+    (7) to_prove -> LINENUM statement TO_PROVE .
+
+    LINENUM         reduce using rule 7 (to_prove -> LINENUM statement TO_PROVE .)
+
+
+state 26
+
+    (14) statement -> statement AND . statement
+    (13) statement -> . OBJECT
+    (14) statement -> . statement AND statement
+    (15) statement -> . statement OR statement
+    (16) statement -> . statement IMPLIES statement
+    (17) statement -> . statement EQUIVALENT statement
+    (18) statement -> . NOT statement
+    (19) statement -> . PRINCIPLE SAYS statement
+    (20) statement -> . LPAREN statement RPAREN
+    (21) statement -> . PRINCIPLE SAYS_FOR PRINCIPLE
+    (22) statement -> . PRINCIPLE CONTROLS statement
+
+    OBJECT          shift and go to state 11
+    NOT             shift and go to state 14
+    PRINCIPLE       shift and go to state 12
+    LPAREN          shift and go to state 10
+
+    statement                      shift and go to state 39
+
+state 27
+
+    (16) statement -> statement IMPLIES . statement
+    (13) statement -> . OBJECT
+    (14) statement -> . statement AND statement
+    (15) statement -> . statement OR statement
+    (16) statement -> . statement IMPLIES statement
+    (17) statement -> . statement EQUIVALENT statement
+    (18) statement -> . NOT statement
+    (19) statement -> . PRINCIPLE SAYS statement
+    (20) statement -> . LPAREN statement RPAREN
+    (21) statement -> . PRINCIPLE SAYS_FOR PRINCIPLE
+    (22) statement -> . PRINCIPLE CONTROLS statement
+
+    OBJECT          shift and go to state 11
+    NOT             shift and go to state 14
+    PRINCIPLE       shift and go to state 12
+    LPAREN          shift and go to state 10
+
+    statement                      shift and go to state 40
+
+state 28
+
+    (17) statement -> statement EQUIVALENT . statement
+    (13) statement -> . OBJECT
+    (14) statement -> . statement AND statement
+    (15) statement -> . statement OR statement
+    (16) statement -> . statement IMPLIES statement
+    (17) statement -> . statement EQUIVALENT statement
+    (18) statement -> . NOT statement
+    (19) statement -> . PRINCIPLE SAYS statement
+    (20) statement -> . LPAREN statement RPAREN
+    (21) statement -> . PRINCIPLE SAYS_FOR PRINCIPLE
+    (22) statement -> . PRINCIPLE CONTROLS statement
+
+    OBJECT          shift and go to state 11
+    NOT             shift and go to state 14
+    PRINCIPLE       shift and go to state 12
+    LPAREN          shift and go to state 10
+
+    statement                      shift and go to state 41
+
+state 29
+
+    (15) statement -> statement OR . statement
+    (13) statement -> . OBJECT
+    (14) statement -> . statement AND statement
+    (15) statement -> . statement OR statement
+    (16) statement -> . statement IMPLIES statement
+    (17) statement -> . statement EQUIVALENT statement
+    (18) statement -> . NOT statement
+    (19) statement -> . PRINCIPLE SAYS statement
+    (20) statement -> . LPAREN statement RPAREN
+    (21) statement -> . PRINCIPLE SAYS_FOR PRINCIPLE
+    (22) statement -> . PRINCIPLE CONTROLS statement
+
+    OBJECT          shift and go to state 11
+    NOT             shift and go to state 14
+    PRINCIPLE       shift and go to state 12
+    LPAREN          shift and go to state 10
+
+    statement                      shift and go to state 42
+
+state 30
+
+    (18) statement -> NOT statement .
+    (14) statement -> statement . AND statement
+    (15) statement -> statement . OR statement
+    (16) statement -> statement . IMPLIES statement
+    (17) statement -> statement . EQUIVALENT statement
+
+    REASON          reduce using rule 18 (statement -> NOT statement .)
+    GIVEN           reduce using rule 18 (statement -> NOT statement .)
+    AND             reduce using rule 18 (statement -> NOT statement .)
+    OR              reduce using rule 18 (statement -> NOT statement .)
+    IMPLIES         reduce using rule 18 (statement -> NOT statement .)
+    TO_PROVE        reduce using rule 18 (statement -> NOT statement .)
+    RPAREN          reduce using rule 18 (statement -> NOT statement .)
+    EQUIVALENT      shift and go to state 28
+
+  ! EQUIVALENT      [ reduce using rule 18 (statement -> NOT statement .) ]
+  ! AND             [ shift and go to state 26 ]
+  ! OR              [ shift and go to state 29 ]
+  ! IMPLIES         [ shift and go to state 27 ]
+
+
+state 31
+
+    (6) given -> LINENUM statement . GIVEN
+    (10) line -> LINENUM statement . REASON LINENUM LINENUM
+    (11) line -> LINENUM statement . REASON LINENUM
+    (12) line -> LINENUM statement . REASON
+    (14) statement -> statement . AND statement
+    (15) statement -> statement . OR statement
+    (16) statement -> statement . IMPLIES statement
+    (17) statement -> statement . EQUIVALENT statement
+
+    GIVEN           shift and go to state 33
+    REASON          shift and go to state 34
+    AND             shift and go to state 26
+    OR              shift and go to state 29
+    IMPLIES         shift and go to state 27
+    EQUIVALENT      shift and go to state 28
+
+
+state 32
+
+    (10) line -> LINENUM statement . REASON LINENUM LINENUM
+    (11) line -> LINENUM statement . REASON LINENUM
+    (12) line -> LINENUM statement . REASON
+    (14) statement -> statement . AND statement
+    (15) statement -> statement . OR statement
+    (16) statement -> statement . IMPLIES statement
+    (17) statement -> statement . EQUIVALENT statement
+
+    REASON          shift and go to state 34
+    AND             shift and go to state 26
+    OR              shift and go to state 29
+    IMPLIES         shift and go to state 27
+    EQUIVALENT      shift and go to state 28
+
+
+state 33
+
+    (6) given -> LINENUM statement GIVEN .
+
+    LINENUM         reduce using rule 6 (given -> LINENUM statement GIVEN .)
+
+
+state 34
+
+    (10) line -> LINENUM statement REASON . LINENUM LINENUM
+    (11) line -> LINENUM statement REASON . LINENUM
+    (12) line -> LINENUM statement REASON .
+
+  ! shift/reduce conflict for LINENUM resolved as shift
+    LINENUM         shift and go to state 43
+    $end            reduce using rule 12 (line -> LINENUM statement REASON .)
+
+  ! LINENUM         [ reduce using rule 12 (line -> LINENUM statement REASON .) ]
+
+
+state 35
+
+    (20) statement -> LPAREN statement RPAREN .
+
+    REASON          reduce using rule 20 (statement -> LPAREN statement RPAREN .)
+    GIVEN           reduce using rule 20 (statement -> LPAREN statement RPAREN .)
+    AND             reduce using rule 20 (statement -> LPAREN statement RPAREN .)
+    OR              reduce using rule 20 (statement -> LPAREN statement RPAREN .)
+    IMPLIES         reduce using rule 20 (statement -> LPAREN statement RPAREN .)
+    EQUIVALENT      reduce using rule 20 (statement -> LPAREN statement RPAREN .)
+    TO_PROVE        reduce using rule 20 (statement -> LPAREN statement RPAREN .)
+    RPAREN          reduce using rule 20 (statement -> LPAREN statement RPAREN .)
+
+
+state 36
+
+    (21) statement -> PRINCIPLE SAYS_FOR PRINCIPLE .
+
+    REASON          reduce using rule 21 (statement -> PRINCIPLE SAYS_FOR PRINCIPLE .)
+    GIVEN           reduce using rule 21 (statement -> PRINCIPLE SAYS_FOR PRINCIPLE .)
+    AND             reduce using rule 21 (statement -> PRINCIPLE SAYS_FOR PRINCIPLE .)
+    OR              reduce using rule 21 (statement -> PRINCIPLE SAYS_FOR PRINCIPLE .)
+    IMPLIES         reduce using rule 21 (statement -> PRINCIPLE SAYS_FOR PRINCIPLE .)
+    EQUIVALENT      reduce using rule 21 (statement -> PRINCIPLE SAYS_FOR PRINCIPLE .)
+    TO_PROVE        reduce using rule 21 (statement -> PRINCIPLE SAYS_FOR PRINCIPLE .)
+    RPAREN          reduce using rule 21 (statement -> PRINCIPLE SAYS_FOR PRINCIPLE .)
+
+
+state 37
+
+    (22) statement -> PRINCIPLE CONTROLS statement .
+    (14) statement -> statement . AND statement
+    (15) statement -> statement . OR statement
+    (16) statement -> statement . IMPLIES statement
+    (17) statement -> statement . EQUIVALENT statement
+
+    REASON          reduce using rule 22 (statement -> PRINCIPLE CONTROLS statement .)
+    GIVEN           reduce using rule 22 (statement -> PRINCIPLE CONTROLS statement .)
+    AND             reduce using rule 22 (statement -> PRINCIPLE CONTROLS statement .)
+    OR              reduce using rule 22 (statement -> PRINCIPLE CONTROLS statement .)
+    IMPLIES         reduce using rule 22 (statement -> PRINCIPLE CONTROLS statement .)
+    EQUIVALENT      reduce using rule 22 (statement -> PRINCIPLE CONTROLS statement .)
+    TO_PROVE        reduce using rule 22 (statement -> PRINCIPLE CONTROLS statement .)
+    RPAREN          reduce using rule 22 (statement -> PRINCIPLE CONTROLS statement .)
+
+  ! AND             [ shift and go to state 26 ]
+  ! OR              [ shift and go to state 29 ]
+  ! IMPLIES         [ shift and go to state 27 ]
+  ! EQUIVALENT      [ shift and go to state 28 ]
+
+
+state 38
+
+    (19) statement -> PRINCIPLE SAYS statement .
+    (14) statement -> statement . AND statement
+    (15) statement -> statement . OR statement
+    (16) statement -> statement . IMPLIES statement
+    (17) statement -> statement . EQUIVALENT statement
+
+    REASON          reduce using rule 19 (statement -> PRINCIPLE SAYS statement .)
+    GIVEN           reduce using rule 19 (statement -> PRINCIPLE SAYS statement .)
+    AND             reduce using rule 19 (statement -> PRINCIPLE SAYS statement .)
+    OR              reduce using rule 19 (statement -> PRINCIPLE SAYS statement .)
+    IMPLIES         reduce using rule 19 (statement -> PRINCIPLE SAYS statement .)
+    TO_PROVE        reduce using rule 19 (statement -> PRINCIPLE SAYS statement .)
+    RPAREN          reduce using rule 19 (statement -> PRINCIPLE SAYS statement .)
+    EQUIVALENT      shift and go to state 28
+
+  ! EQUIVALENT      [ reduce using rule 19 (statement -> PRINCIPLE SAYS statement .) ]
+  ! AND             [ shift and go to state 26 ]
+  ! OR              [ shift and go to state 29 ]
+  ! IMPLIES         [ shift and go to state 27 ]
+
+
+state 39
+
+    (14) statement -> statement AND statement .
+    (14) statement -> statement . AND statement
+    (15) statement -> statement . OR statement
+    (16) statement -> statement . IMPLIES statement
+    (17) statement -> statement . EQUIVALENT statement
+
+    REASON          reduce using rule 14 (statement -> statement AND statement .)
+    GIVEN           reduce using rule 14 (statement -> statement AND statement .)
+    AND             reduce using rule 14 (statement -> statement AND statement .)
+    OR              reduce using rule 14 (statement -> statement AND statement .)
+    IMPLIES         reduce using rule 14 (statement -> statement AND statement .)
+    TO_PROVE        reduce using rule 14 (statement -> statement AND statement .)
+    RPAREN          reduce using rule 14 (statement -> statement AND statement .)
+    EQUIVALENT      shift and go to state 28
+
+  ! EQUIVALENT      [ reduce using rule 14 (statement -> statement AND statement .) ]
+  ! AND             [ shift and go to state 26 ]
+  ! OR              [ shift and go to state 29 ]
+  ! IMPLIES         [ shift and go to state 27 ]
+
+
+state 40
+
+    (16) statement -> statement IMPLIES statement .
+    (14) statement -> statement . AND statement
+    (15) statement -> statement . OR statement
+    (16) statement -> statement . IMPLIES statement
+    (17) statement -> statement . EQUIVALENT statement
+
+    REASON          reduce using rule 16 (statement -> statement IMPLIES statement .)
+    GIVEN           reduce using rule 16 (statement -> statement IMPLIES statement .)
+    IMPLIES         reduce using rule 16 (statement -> statement IMPLIES statement .)
+    TO_PROVE        reduce using rule 16 (statement -> statement IMPLIES statement .)
+    RPAREN          reduce using rule 16 (statement -> statement IMPLIES statement .)
+    AND             shift and go to state 26
+    OR              shift and go to state 29
+    EQUIVALENT      shift and go to state 28
+
+  ! AND             [ reduce using rule 16 (statement -> statement IMPLIES statement .) ]
+  ! OR              [ reduce using rule 16 (statement -> statement IMPLIES statement .) ]
+  ! EQUIVALENT      [ reduce using rule 16 (statement -> statement IMPLIES statement .) ]
+  ! IMPLIES         [ shift and go to state 27 ]
+
+
+state 41
+
+    (17) statement -> statement EQUIVALENT statement .
+    (14) statement -> statement . AND statement
+    (15) statement -> statement . OR statement
+    (16) statement -> statement . IMPLIES statement
+    (17) statement -> statement . EQUIVALENT statement
+
+    REASON          reduce using rule 17 (statement -> statement EQUIVALENT statement .)
+    GIVEN           reduce using rule 17 (statement -> statement EQUIVALENT statement .)
+    AND             reduce using rule 17 (statement -> statement EQUIVALENT statement .)
+    OR              reduce using rule 17 (statement -> statement EQUIVALENT statement .)
+    IMPLIES         reduce using rule 17 (statement -> statement EQUIVALENT statement .)
+    EQUIVALENT      reduce using rule 17 (statement -> statement EQUIVALENT statement .)
+    TO_PROVE        reduce using rule 17 (statement -> statement EQUIVALENT statement .)
+    RPAREN          reduce using rule 17 (statement -> statement EQUIVALENT statement .)
+
+  ! AND             [ shift and go to state 26 ]
+  ! OR              [ shift and go to state 29 ]
+  ! IMPLIES         [ shift and go to state 27 ]
+  ! EQUIVALENT      [ shift and go to state 28 ]
+
+
+state 42
+
+    (15) statement -> statement OR statement .
+    (14) statement -> statement . AND statement
+    (15) statement -> statement . OR statement
+    (16) statement -> statement . IMPLIES statement
+    (17) statement -> statement . EQUIVALENT statement
+
+    REASON          reduce using rule 15 (statement -> statement OR statement .)
+    GIVEN           reduce using rule 15 (statement -> statement OR statement .)
+    OR              reduce using rule 15 (statement -> statement OR statement .)
+    IMPLIES         reduce using rule 15 (statement -> statement OR statement .)
+    TO_PROVE        reduce using rule 15 (statement -> statement OR statement .)
+    RPAREN          reduce using rule 15 (statement -> statement OR statement .)
+    AND             shift and go to state 26
+    EQUIVALENT      shift and go to state 28
+
+  ! AND             [ reduce using rule 15 (statement -> statement OR statement .) ]
+  ! EQUIVALENT      [ reduce using rule 15 (statement -> statement OR statement .) ]
+  ! OR              [ shift and go to state 29 ]
+  ! IMPLIES         [ shift and go to state 27 ]
+
+
+state 43
+
+    (10) line -> LINENUM statement REASON LINENUM . LINENUM
+    (11) line -> LINENUM statement REASON LINENUM .
+
+  ! shift/reduce conflict for LINENUM resolved as shift
+    LINENUM         shift and go to state 44
+    $end            reduce using rule 11 (line -> LINENUM statement REASON LINENUM .)
+
+  ! LINENUM         [ reduce using rule 11 (line -> LINENUM statement REASON LINENUM .) ]
+
+
+state 44
+
+    (10) line -> LINENUM statement REASON LINENUM LINENUM .
+
+    LINENUM         reduce using rule 10 (line -> LINENUM statement REASON LINENUM LINENUM .)
+    $end            reduce using rule 10 (line -> LINENUM statement REASON LINENUM LINENUM .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for LINENUM in state 34 resolved as shift
+WARNING: shift/reduce conflict for LINENUM in state 43 resolved as shift
