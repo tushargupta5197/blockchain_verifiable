@@ -19,6 +19,9 @@ tokens = (
 	'REASON',
 	'TO_PROVE',
 	'GIVEN',
+	'SEMICOLON',
+	'TRUE',
+	'FALSE',
 	#'COMMA',
 )
 
@@ -28,7 +31,9 @@ reserved = {
 	'says_for' : 'SAYS_FOR',
 	'controls' : 'CONTROLS',
 	'@To_Prove' : 'TO_PROVE',
-	'@Given' : 'GIVEN'
+	'@Given' : 'GIVEN',
+	'true' : 'TRUE',
+	'false' : 'FALSE',
 
 }
 
@@ -49,6 +54,7 @@ t_DERIVES = r'\|-'
 t_LINENUM = r'[0-9]+'
 t_LPAREN  = r'\('
 t_RPAREN  = r'\)'
+t_SEMICOLON = r';'
 # t_COMMA = r','
 
 def t_PRINCIPLE(t):

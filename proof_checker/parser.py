@@ -56,15 +56,15 @@ def p_lines(p):
 	rule.append(8)
 
 def p_line_2refs(p):
-	'line : LINENUM statement REASON LINENUM LINENUM'
+	'line : LINENUM statement REASON LINENUM LINENUM SEMICOLON'
 	rule.append(9)
-
+	
 def p_line_1ref(p):
-	'line : LINENUM statement REASON LINENUM'
+	'line : LINENUM statement REASON LINENUM SEMICOLON'
 	rule.append(10)
 
 def p_line_noref(p):
-	'line : LINENUM statement REASON'
+	'line : LINENUM statement REASON SEMICOLON'
 	rule.append(11)
 
 def p_statement(p):

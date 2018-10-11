@@ -3,7 +3,9 @@ Created by PLY version 3.10 (http://www.dabeaz.com/ply)
 Unused terminals:
 
     CAN_ACCESS
+    TRUE
     DERIVES
+    FALSE
 
 Grammar
 
@@ -17,9 +19,9 @@ Rule 6     given -> LINENUM statement GIVEN
 Rule 7     to_prove -> LINENUM statement TO_PROVE
 Rule 8     lines -> lines line
 Rule 9     lines -> line
-Rule 10    line -> LINENUM statement REASON LINENUM LINENUM
-Rule 11    line -> LINENUM statement REASON LINENUM
-Rule 12    line -> LINENUM statement REASON
+Rule 10    line -> LINENUM statement REASON LINENUM LINENUM SEMICOLON
+Rule 11    line -> LINENUM statement REASON LINENUM SEMICOLON
+Rule 12    line -> LINENUM statement REASON SEMICOLON
 Rule 13    statement -> OBJECT
 Rule 14    statement -> statement AND statement
 Rule 15    statement -> statement OR statement
@@ -38,6 +40,7 @@ CAN_ACCESS           :
 CONTROLS             : 22
 DERIVES              : 
 EQUIVALENT           : 17
+FALSE                : 
 GIVEN                : 6
 IMPLIES              : 16
 LINENUM              : 6 7 10 10 10 11 11 12
@@ -50,7 +53,9 @@ REASON               : 10 11 12
 RPAREN               : 20
 SAYS                 : 19
 SAYS_FOR             : 21
+SEMICOLON            : 10 11 12
 TO_PROVE             : 7
+TRUE                 : 
 error                : 
 
 Nonterminals, with rules where they appear
@@ -88,9 +93,9 @@ state 1
     (9) lines -> . line
     (4) givens -> . givens given
     (5) givens -> . given
-    (10) line -> . LINENUM statement REASON LINENUM LINENUM
-    (11) line -> . LINENUM statement REASON LINENUM
-    (12) line -> . LINENUM statement REASON
+    (10) line -> . LINENUM statement REASON LINENUM LINENUM SEMICOLON
+    (11) line -> . LINENUM statement REASON LINENUM SEMICOLON
+    (12) line -> . LINENUM statement REASON SEMICOLON
     (6) given -> . LINENUM statement GIVEN
 
     LINENUM         shift and go to state 8
@@ -141,9 +146,9 @@ state 5
     (8) lines -> . lines line
     (9) lines -> . line
     (6) given -> . LINENUM statement GIVEN
-    (10) line -> . LINENUM statement REASON LINENUM LINENUM
-    (11) line -> . LINENUM statement REASON LINENUM
-    (12) line -> . LINENUM statement REASON
+    (10) line -> . LINENUM statement REASON LINENUM LINENUM SEMICOLON
+    (11) line -> . LINENUM statement REASON LINENUM SEMICOLON
+    (12) line -> . LINENUM statement REASON SEMICOLON
 
     LINENUM         shift and go to state 17
 
@@ -162,9 +167,9 @@ state 7
 
     (2) proof -> to_prove lines .
     (8) lines -> lines . line
-    (10) line -> . LINENUM statement REASON LINENUM LINENUM
-    (11) line -> . LINENUM statement REASON LINENUM
-    (12) line -> . LINENUM statement REASON
+    (10) line -> . LINENUM statement REASON LINENUM LINENUM SEMICOLON
+    (11) line -> . LINENUM statement REASON LINENUM SEMICOLON
+    (12) line -> . LINENUM statement REASON SEMICOLON
 
     $end            reduce using rule 2 (proof -> to_prove lines .)
     LINENUM         shift and go to state 18
@@ -173,9 +178,9 @@ state 7
 
 state 8
 
-    (10) line -> LINENUM . statement REASON LINENUM LINENUM
-    (11) line -> LINENUM . statement REASON LINENUM
-    (12) line -> LINENUM . statement REASON
+    (10) line -> LINENUM . statement REASON LINENUM LINENUM SEMICOLON
+    (11) line -> LINENUM . statement REASON LINENUM SEMICOLON
+    (12) line -> LINENUM . statement REASON SEMICOLON
     (6) given -> LINENUM . statement GIVEN
     (13) statement -> . OBJECT
     (14) statement -> . statement AND statement
@@ -296,9 +301,9 @@ state 16
 
     (3) proof -> to_prove givens lines .
     (8) lines -> lines . line
-    (10) line -> . LINENUM statement REASON LINENUM LINENUM
-    (11) line -> . LINENUM statement REASON LINENUM
-    (12) line -> . LINENUM statement REASON
+    (10) line -> . LINENUM statement REASON LINENUM LINENUM SEMICOLON
+    (11) line -> . LINENUM statement REASON LINENUM SEMICOLON
+    (12) line -> . LINENUM statement REASON SEMICOLON
 
     $end            reduce using rule 3 (proof -> to_prove givens lines .)
     LINENUM         shift and go to state 18
@@ -308,9 +313,9 @@ state 16
 state 17
 
     (6) given -> LINENUM . statement GIVEN
-    (10) line -> LINENUM . statement REASON LINENUM LINENUM
-    (11) line -> LINENUM . statement REASON LINENUM
-    (12) line -> LINENUM . statement REASON
+    (10) line -> LINENUM . statement REASON LINENUM LINENUM SEMICOLON
+    (11) line -> LINENUM . statement REASON LINENUM SEMICOLON
+    (12) line -> LINENUM . statement REASON SEMICOLON
     (13) statement -> . OBJECT
     (14) statement -> . statement AND statement
     (15) statement -> . statement OR statement
@@ -331,9 +336,9 @@ state 17
 
 state 18
 
-    (10) line -> LINENUM . statement REASON LINENUM LINENUM
-    (11) line -> LINENUM . statement REASON LINENUM
-    (12) line -> LINENUM . statement REASON
+    (10) line -> LINENUM . statement REASON LINENUM LINENUM SEMICOLON
+    (11) line -> LINENUM . statement REASON LINENUM SEMICOLON
+    (12) line -> LINENUM . statement REASON SEMICOLON
     (13) statement -> . OBJECT
     (14) statement -> . statement AND statement
     (15) statement -> . statement OR statement
@@ -362,9 +367,9 @@ state 19
 
 state 20
 
-    (10) line -> LINENUM statement . REASON LINENUM LINENUM
-    (11) line -> LINENUM statement . REASON LINENUM
-    (12) line -> LINENUM statement . REASON
+    (10) line -> LINENUM statement . REASON LINENUM LINENUM SEMICOLON
+    (11) line -> LINENUM statement . REASON LINENUM SEMICOLON
+    (12) line -> LINENUM statement . REASON SEMICOLON
     (6) given -> LINENUM statement . GIVEN
     (14) statement -> statement . AND statement
     (15) statement -> statement . OR statement
@@ -560,9 +565,9 @@ state 30
 state 31
 
     (6) given -> LINENUM statement . GIVEN
-    (10) line -> LINENUM statement . REASON LINENUM LINENUM
-    (11) line -> LINENUM statement . REASON LINENUM
-    (12) line -> LINENUM statement . REASON
+    (10) line -> LINENUM statement . REASON LINENUM LINENUM SEMICOLON
+    (11) line -> LINENUM statement . REASON LINENUM SEMICOLON
+    (12) line -> LINENUM statement . REASON SEMICOLON
     (14) statement -> statement . AND statement
     (15) statement -> statement . OR statement
     (16) statement -> statement . IMPLIES statement
@@ -578,9 +583,9 @@ state 31
 
 state 32
 
-    (10) line -> LINENUM statement . REASON LINENUM LINENUM
-    (11) line -> LINENUM statement . REASON LINENUM
-    (12) line -> LINENUM statement . REASON
+    (10) line -> LINENUM statement . REASON LINENUM LINENUM SEMICOLON
+    (11) line -> LINENUM statement . REASON LINENUM SEMICOLON
+    (12) line -> LINENUM statement . REASON SEMICOLON
     (14) statement -> statement . AND statement
     (15) statement -> statement . OR statement
     (16) statement -> statement . IMPLIES statement
@@ -602,15 +607,12 @@ state 33
 
 state 34
 
-    (10) line -> LINENUM statement REASON . LINENUM LINENUM
-    (11) line -> LINENUM statement REASON . LINENUM
-    (12) line -> LINENUM statement REASON .
+    (10) line -> LINENUM statement REASON . LINENUM LINENUM SEMICOLON
+    (11) line -> LINENUM statement REASON . LINENUM SEMICOLON
+    (12) line -> LINENUM statement REASON . SEMICOLON
 
-  ! shift/reduce conflict for LINENUM resolved as shift
     LINENUM         shift and go to state 43
-    $end            reduce using rule 12 (line -> LINENUM statement REASON .)
-
-  ! LINENUM         [ reduce using rule 12 (line -> LINENUM statement REASON .) ]
+    SEMICOLON       shift and go to state 44
 
 
 state 35
@@ -781,25 +783,40 @@ state 42
 
 state 43
 
-    (10) line -> LINENUM statement REASON LINENUM . LINENUM
-    (11) line -> LINENUM statement REASON LINENUM .
+    (10) line -> LINENUM statement REASON LINENUM . LINENUM SEMICOLON
+    (11) line -> LINENUM statement REASON LINENUM . SEMICOLON
 
-  ! shift/reduce conflict for LINENUM resolved as shift
-    LINENUM         shift and go to state 44
-    $end            reduce using rule 11 (line -> LINENUM statement REASON LINENUM .)
-
-  ! LINENUM         [ reduce using rule 11 (line -> LINENUM statement REASON LINENUM .) ]
+    LINENUM         shift and go to state 45
+    SEMICOLON       shift and go to state 46
 
 
 state 44
 
-    (10) line -> LINENUM statement REASON LINENUM LINENUM .
+    (12) line -> LINENUM statement REASON SEMICOLON .
 
-    LINENUM         reduce using rule 10 (line -> LINENUM statement REASON LINENUM LINENUM .)
-    $end            reduce using rule 10 (line -> LINENUM statement REASON LINENUM LINENUM .)
+    LINENUM         reduce using rule 12 (line -> LINENUM statement REASON SEMICOLON .)
+    $end            reduce using rule 12 (line -> LINENUM statement REASON SEMICOLON .)
 
-WARNING: 
-WARNING: Conflicts:
-WARNING: 
-WARNING: shift/reduce conflict for LINENUM in state 34 resolved as shift
-WARNING: shift/reduce conflict for LINENUM in state 43 resolved as shift
+
+state 45
+
+    (10) line -> LINENUM statement REASON LINENUM LINENUM . SEMICOLON
+
+    SEMICOLON       shift and go to state 47
+
+
+state 46
+
+    (11) line -> LINENUM statement REASON LINENUM SEMICOLON .
+
+    LINENUM         reduce using rule 11 (line -> LINENUM statement REASON LINENUM SEMICOLON .)
+    $end            reduce using rule 11 (line -> LINENUM statement REASON LINENUM SEMICOLON .)
+
+
+state 47
+
+    (10) line -> LINENUM statement REASON LINENUM LINENUM SEMICOLON .
+
+    LINENUM         reduce using rule 10 (line -> LINENUM statement REASON LINENUM LINENUM SEMICOLON .)
+    $end            reduce using rule 10 (line -> LINENUM statement REASON LINENUM LINENUM SEMICOLON .)
+
